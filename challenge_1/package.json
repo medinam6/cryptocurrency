@@ -4,7 +4,8 @@
   "description": "single-page app that enables users to search and browse historical event information based on data found in the JSON file",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "npx webpack --config webpack.config.js --watch"
   },
   "repository": {
     "type": "git",
