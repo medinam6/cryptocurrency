@@ -1,0 +1,30 @@
+{
+  "name": "historical-events",
+  "version": "1.0.0",
+  "description": "single-page app that enables users to search and browse historical event information based on data found in the JSON file",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medinam6/rpt24-mini-apps-2/tree/master/challenge_1"
+  },
+  "keywords": [
+    "historical"
+  ],
+  "author": "Meyvi Medina-Magarino",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "webpack": "^5.22.0",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
