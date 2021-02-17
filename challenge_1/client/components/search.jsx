@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Search = () => {
+const Search = (props) => {
   return (
-    <form>
-      <label>
-        Search:
-        <input type='text' name='search'/>
-      </label>
-      <input type='submt' value='submit' />
-    </form>
+  <form onSubmit={props.handleSubmit}>
+    <label>
+      Search:
+      <input type="text" value={props.value} onChange={props.handleChange} name="search" />
+    </label>
+    <input type="submit" value="Submit" />
+  </form>
   )
 }
 
