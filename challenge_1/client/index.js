@@ -5,5 +5,5 @@ import App from './components/app.jsx';
 
 ReactDOM.render(
   React.createElement('div', null, <App />),
-  document.getElementById('app')
+  document.getElementById('index')
 );

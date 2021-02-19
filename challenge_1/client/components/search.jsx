@@ -10,6 +10,6 @@ const Search = (props) => {
     <input type="submit" value="Submit" />
   </form>
   )
-}
+};
 
 export default Search;
