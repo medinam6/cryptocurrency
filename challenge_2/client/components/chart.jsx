@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from 'chart.js';
 
-class Test extends React.Component {
+class Graph extends React.Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
@@ -18,7 +18,7 @@ class Test extends React.Component {
         labels: chartLabels,
         datasets: [
           {
-            label: 'Bit',
+            label: 'Bit Coin Price',
             data: chartData,
           }
         ]
@@ -42,4 +42,4 @@ class Test extends React.Component {
   }
 }
 
-export default Test;
+export default Graph;

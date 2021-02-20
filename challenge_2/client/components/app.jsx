@@ -1,5 +1,5 @@
 import React from 'react';
-import Test from './chart.js';
+import Graph from './chart.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -7,17 +7,29 @@ class App extends React.Component {
     this.state = {
       bitLabels: [],
       bitData: [],
+      start: '',
+      end: '',
     }
     this.formatBitData = this.formatBitData.bind(this);
+    this.getData = this.getData.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  componentDidMount() {
-    fetch('https://api.coindesk.com/v1/bpi/historical/close.json?start=2013-09-01&end=2013-09-30')
+  getData(e) {
+    e.preventDefault();
+
+    fetch(`https://api.coindesk.com/v1/bpi/historical/close.json?start=${this.state.start}&end=${this.state.end}`)
     .then(res => res.json())
     .then((result) => {
       this.formatBitData(result.bpi);
     })
     .catch(err => console.log(err))
+  }
+
+  handleChange(e, type){
+    this.setState({
+      [type]: e.target.value
+    });
   }
 
   formatBitData(bitData) {
@@ -36,7 +48,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Test bitLabels={this.state.bitLabels}
+      <form onSubmit={this.getData}>
+        <label>
+          Start Date:
+          <input type="text" placeholder="YYYY-MM-DD" value={this.state.value} onChange={(e) => this.handleChange(e, 'start')} />
+        </label>
+        <label>
+        End Date:
+          <input type="text" placeholder="YYYY-MM-DD" value={this.state.value} onChange={(e) => this.handleChange(e, 'end')} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      <Graph bitLabels={this.state.bitLabels}
           bitData={this.state.bitData}/>
       </div>
     );
