@@ -11,7 +11,7 @@ class App extends React.Component {
       value: '',
       events: [],
       paginateLink: '',
-      paginateCount: 0,
+      pageCount: 0,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -25,14 +25,11 @@ class App extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    axios.get(`http://localhost:3001/events?q=${this.state.value}&_page=7&_limit=10`)
+    axios.get(`http://localhost:3000/events?q=${this.state.value}`)
       .then(res => {
         this.setState({
-          events: res.data,
-          paginateLink: res.headers.link,
-          paginateCount: Number(res.headers['x-total-count']),
+          pageCount: Math.ceil(res.data.length/10),
         });
-        console.log(res.headers.link, res);
       }).catch(err => {
         console.log(err);
       });
@@ -44,8 +41,7 @@ class App extends React.Component {
        <Search handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         value={this.state.value} />
-      <Paginate paginateLink={this.state. paginateLink}
-        paginateCount={this.state.paginateCount}
+      <Paginate pageCount={this.state.pageCount}
         events={this.state.events}/>
      </div>
     );
@@ -53,5 +49,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-//I think that the way to do this is by attaching the link websites in the paginate elements and then sending the new list to result and updating paginate to the new links

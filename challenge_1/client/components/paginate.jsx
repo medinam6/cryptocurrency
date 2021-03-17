@@ -6,15 +6,8 @@ class Paginate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      first: '',
-      prev: '',
-      next: '',
-      last: '',
-      pages: 0,
-      pageCount: 0,
-      perPage: 10,
       currentPage: 0,
-      data: ''
+      events: '',
     }
     this.parseLinkHeader = this.parseLinkHeader.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
@@ -34,19 +27,6 @@ class Paginate extends React.Component {
     return linkObj;
   };
 
-  updateState(link, count) {
-    const linkObj = this.parseLinkHeader(link);
-
-    this.setState({
-      first: linkObj[first],
-      prev: linkObj[rev],
-      next: linkObj[next],
-      last: linkObj[last],
-      count: count,
-      pageCount: Math.floor(count/10),
-    });
-  };
-
   handlePageClick(e) {
     // const selectedPage = e.selected;
     // const offset = selectedPage * this.state.perPage;
@@ -57,39 +37,30 @@ class Paginate extends React.Component {
     // }, () => {
     //     this.updateState()
     // });
-    console.log(hi, e);
+    console.log(e);
   };
 
   render() {
-    let listedData;
-    if (this.state.data === '') {
-      listedData = this.props.events;
-    } else {
-      listedData = this.state.data;
-    }
+    const currentPageData = this.props.events.slice(0,11).map((e) => <div>{e}</div>);
 
     // this.updateState(this.props.paginateLink, this.props.paginateCount);
 
     return (
       <div className="App">
-      <h1>React Paginate Example</h1>
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        breakClassName={"break-me"}
-        pageCount={this.state.pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={this.handlePageClick}
-        containerClassName={"pagination"}
-        previousLinkClassName={"pagination__link"}
-        nextLinkClassName={"pagination__link"}
-        disabledClassName={"pagination__link--disabled"}
-        activeClassName={"pagination__link--active"}
-      />
-      <Results events={listedData}/>
-    </div>
+        <h1>React Paginate Example</h1>
+        <ReactPaginate
+          previousLabel={"← Previous"}
+          nextLabel={"Next →"}
+          pageCount={this.props.pageCount}
+          onPageChange={handlePageClick}
+          containerClassName={"pagination"}
+          previousLinkClassName={"pagination__link"}
+          nextLinkClassName={"pagination__link"}
+          disabledClassName={"pagination__link--disabled"}
+          activeClassName={"pagination__link--active"}
+        />
+        {currentPageData}
+      </div>
     );
   }
 }
