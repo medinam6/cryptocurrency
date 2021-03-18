@@ -3,7 +3,7 @@ import React from 'react';
 function PinsPad(props) {
   const pins = props.pinsAvailable;
   const pinButtons = pins.map((pin) =>
-    <button>{pin}</button>
+    <button key={pin} value={pin} onClick={props.updatePins}>{pin}</button>
   );
   return (
     <div>{pinButtons}</div>
