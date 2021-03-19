@@ -6,6 +6,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      games: 1,
       currentFrame: 1,
       firstRoll: true,
       rollA: null,
@@ -17,8 +18,8 @@ class App extends React.Component {
         [
           0,
           {rollA: '', rollB: '', total: ''},
-          {rollA: '', rollB: '', total: ''},
-          {rollA: '', rollB: '', total: ''}
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
         ],
     };
     this.updatePins = this.updatePins.bind(this);
@@ -52,21 +53,33 @@ class App extends React.Component {
         pinsAvailable: [0,1,2,3,4,5,6,7,8,9,10],
         currentRoll: 1,
         currentFrame: current + 1,
-        frames: updatedFrames
+        frames: updatedFrames,
+        runningTotal: updatedFrames[current].total
       });
     }
   }
 
+  endOfGame() {
+
+  }
+
   render() {
+    if(this.state.currentFrame > 3) {
+      return (
+        <div>
+          <div>End of Game {this.state.games}</div>
+          <div>Total Score: {this.state.runningTotal}</div>
+        </div>
+      )
+    }
     return (
       <div>
+        <h2>Game: {this.state.games}</h2>
         <h1>Frame: {this.state.currentFrame}</h1>
         <h2>Roll: {this.state.currentRoll}</h2>
-        <ScoreBoard frames={this.state.frames}
-        />
         <PinsPad pinsAvailable={this.state.pinsAvailable}
-          updatePins={this.updatePins}
-        />
+          updatePins={this.updatePins}/>
+        <ScoreBoard frames={this.state.frames}/>
       </div>
     );
   }
