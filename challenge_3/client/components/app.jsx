@@ -21,6 +21,13 @@ class App extends React.Component {
           {rollA: '', rollB: '', total: '', bonus: ''},
           {rollA: '', rollB: '', total: '', bonus: ''},
           {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
+          {rollA: '', rollB: '', total: '', bonus: ''},
         ],
     };
     this.updatePins = this.updatePins.bind(this);
@@ -41,6 +48,13 @@ class App extends React.Component {
       frames:
       [
         0,
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
+        {rollA: '', rollB: '', total: '', bonus: ''},
         {rollA: '', rollB: '', total: '', bonus: ''},
         {rollA: '', rollB: '', total: '', bonus: ''},
         {rollA: '', rollB: '', total: '', bonus: ''},
@@ -150,7 +164,7 @@ class App extends React.Component {
 
   render() {
     let newGame;
-    if (this.state.currentFrame > 3) {
+    if (this.state.currentFrame > 10) {
       newGame =
       <div>
         <div>End of Game {this.state.games}</div>
