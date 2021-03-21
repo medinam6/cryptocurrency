@@ -27,5 +27,9 @@
     "@babel/preset-react": "^7.12.13",
     "babel-loader": "^8.2.2",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.26.3",
+    "webpack-cli": "^4.5.0"
   }
 }

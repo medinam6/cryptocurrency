@@ -9,7 +9,7 @@ function ScoreBoard(props) {
           <h4>Frame: {frames.indexOf(x)}</h4>
           <div>Roll 1: {x.rollA}</div>
           <div>Roll 2: {x.rollB}</div>
-          <div>Current Score: {x.total}</div>
+          <div>Score: {x.total}</div>
         </div>
         )
       }
